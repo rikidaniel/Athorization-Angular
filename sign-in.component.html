@@ -1,0 +1,36 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class="row justify-content-center w-100">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+      <div class="card text-center text-bg-secondary bg-opacity-75">
+        <div class="card-header fw-bold">
+          FORM LOGIN
+        </div>
+        <div class="card-body">
+          <form [formGroup]="signInFormControl" (ngSubmit)="onSubmit(signInFormControl.value)">
+            <div class="mb-3 text-start">
+              <label for="login_name" class="form-label">Email</label>
+              <input type="text" formControlName="login_name" class="form-control" id="login_name">
+              <div *ngIf="submitted && signInFormControl.controls['login_name'].errors" class="text-danger">
+                Email is required
+              </div>
+            </div>
+            <div class="mb-3 text-start">
+              <label for="login_password" class="form-label">Password</label>
+              <input [type]="hide_password ? 'password' : 'text'" formControlName="login_password" class="form-control" id="login_password">
+              <div *ngIf="submitted && signInFormControl.controls['login_password'].errors" class="text-danger">
+                Password is required
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loading" >
+              LOGIN
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+        <div class="card-footer">
+          © Gamma Persada Group 2024
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
